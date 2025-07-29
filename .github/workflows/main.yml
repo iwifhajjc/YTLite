@@ -232,6 +232,16 @@ jobs:
           cd ${{ github.workspace }}
           git clone --quiet --depth=1 --recurse-submodules https://github.com/therealFoxster/DontEatMyContent.git
 
+      - name: Clone YTABConfig 
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/YTABConfig.git
+
+      - name: Clone NoYTPremium 
+        run: |
+          cd ${{ github.workspace }}
+          git clone --quiet --depth=1 https://github.com/PoomSmart/NoYTPremium.git
+
       - name: Build YouPiP
         if: ${{ inputs.enable_youpip }}
         run: |
@@ -285,6 +295,23 @@ jobs:
           mv packages/*.deb ${{ github.workspace }}/ytvo.deb
         env:
           THEOS: ${{ github.workspace }}/theos
+
+      - name: Build YTABConfig
+        run: |
+          cd ${{ github.workspace }}/YTABConfig
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/ytab.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+
+      - name: Build NoYTPremium
+        run: |
+          cd ${{ github.workspace }}/YTABConfig
+          make clean package DEBUG=0 FINALPACKAGE=1
+          mv packages/*.deb ${{ github.workspace }}/noytpm.deb
+        env:
+          THEOS: ${{ github.workspace }}/theos
+          
 
       - name: Build DontEatMyContent
         if: ${{ inputs.enable_demc }}
