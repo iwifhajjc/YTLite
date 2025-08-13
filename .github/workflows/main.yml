@@ -42,7 +42,7 @@ on:
 
       tweak_version:
         description: "The version of the tweak to use. Enter the version manually from dayanch96/YTLite/releases or leave default"
-        default: "5.2b2"
+        default: "5.2b3"
         required: true
         type: string
 
@@ -199,7 +199,7 @@ jobs:
         uses: actions/checkout@v4.1.7
         with:
           repository: PoomSmart/YTUHD
-          ref: 0f59b38817d554ab692a0053456319847a6ab1a1
+          ref: b319ecc37250af5af3f17696fe282f7b522b4b61
           path: ${{ github.workspace }}/YTUHD
 
       - name: Clone Return-YouTube-Dislikes
